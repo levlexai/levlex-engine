@@ -54,3 +54,30 @@ export interface PresentationGeneratorRequest {
 export interface PresentationGeneratorOutput {
     presentation: Buffer;
 }
+
+export interface PdfGeneratorRequest {
+    prompt: string;
+    model: Model;
+}
+
+export interface PdfGeneratorOutput {
+    pdf: Buffer;
+}
+
+export interface ImageGeneratorRequest{
+    prompt: string;
+    ak: string; // replicate API key
+    go_fast?: boolean; // default true
+    guidance?: number; // default 3.5
+    megapixels?: string; // default "1"
+    num_outputs?: number; // default 1
+    aspect_ratio?: string; // default "1:1"
+    output_format?: string; // default "webp"
+    output_quality?: number; // default 80
+    prompt_strength?: number; // default 0.8
+    num_inference_steps?: number; // default 28
+}
+
+export interface ImageGeneratorOutput{
+    image: Buffer;
+}

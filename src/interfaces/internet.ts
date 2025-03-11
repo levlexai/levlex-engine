@@ -3,7 +3,7 @@ export interface InternetAgentRequest{
     n_queries?: number; // default three
     ak?: number;
     service?: InternetService;
-    model?: Model
+    model: Model;
 }
 
 export interface Model{

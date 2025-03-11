@@ -74,5 +74,26 @@ export async function promptLlmWithJsonSchema(
     } catch (err) {
       throw new Error("Failed to parse LLM output as JSON: " + err);
     }
-  }
+}
+
+export async function promptLlm(prompt: string, model: Model): Promise<string> {
+    const openai = new OpenAI({
+      apiKey: model.ak,
+      baseURL: model.base_url,
+    });
   
+    // Call the Chat Completion API without forcing a JSON response.
+    const completion = await openai.chat.completions.create({
+      model: model.name,
+      messages: [
+        {
+          role: "system",
+          content: "You are a helpful assistant.",
+        },
+        { role: "user", content: prompt },
+      ],
+    });
+  
+    // Return the content of the assistant's reply, or an empty string if not provided.
+    return completion.choices[0].message.content || "";
+}

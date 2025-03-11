@@ -20,7 +20,7 @@
 import { BrowserAgentRequest, BrowserAgentOutput, BrowserAgentActions, Model } from "../../interfaces";
 import { Page, chromium } from "playwright";
 import { z } from "zod";
-import { promptLlm, promptLlmWithSchemaAndConversation } from "../../utils/promptLlm";
+import { promptLlmWithSchemaAndConversation } from "../../utils/promptLlm";
 
 // --------------------------------------------------------------------
 // Schemas

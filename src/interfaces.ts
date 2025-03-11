@@ -39,3 +39,9 @@ export interface BrowserAgentActions{
     action: string;
     screenshot: any; // choose an appropriate format for the screenshot image
 }
+
+export interface DocuchatRequest {
+    prompt: string;
+    document: Buffer; // should contain PDF file data
+    model: Model;
+}  

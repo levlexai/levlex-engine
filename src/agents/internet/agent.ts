@@ -9,7 +9,7 @@
 // Notes
 // - Works best with long-context models
 
-import { InternetAgentRequest } from "../../interfaces/internet";
+import { InternetAgentRequest } from "../../interfaces";
 import { z } from "zod";
 import { promptLlmWithJsonSchema, promptLlm } from "../../utils/promptLlm";
 import { tavilyQuery, jinaQuery, braveQuery, exaQuery } from "../../utils/internetQueries";

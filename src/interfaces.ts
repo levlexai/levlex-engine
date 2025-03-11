@@ -1,7 +1,6 @@
 export interface InternetAgentRequest{
     prompt: string;
     n_queries?: number; // default three
-    ak?: number;
     service?: InternetService;
     model: Model;
 }
@@ -15,4 +14,12 @@ export interface Model{
 export interface InternetService{
     name: 'tavily' | 'jina' | 'brave' | 'exa';
     ak: string;
+}
+
+export interface SequentialInternetAgentRequest{
+    prompt: string;
+    n_queries?: number; // default three
+    max_recursion?: number; // default 10
+    service?: InternetService;
+    model: Model;
 }

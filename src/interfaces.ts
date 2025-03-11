@@ -45,3 +45,12 @@ export interface DocuchatRequest {
     document: Buffer; // should contain PDF file data
     model: Model;
 }  
+
+export interface PresentationGeneratorRequest {
+    prompt: string;
+    model: Model;
+}
+
+export interface PresentationGeneratorOutput {
+    presentation: Buffer;
+}

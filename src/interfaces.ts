@@ -23,3 +23,19 @@ export interface SequentialInternetAgentRequest{
     service?: InternetService;
     model: Model;
 }
+
+export interface BrowserAgentRequest{
+    prompt: string;
+    model: Model;
+    maxSteps?: number;
+}
+
+export interface BrowserAgentOutput{
+    actions: BrowserAgentActions[];
+    conclusion: string;
+}
+
+export interface BrowserAgentActions{
+    action: string;
+    screenshot: any; // choose an appropriate format for the screenshot image
+}

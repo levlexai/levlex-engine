@@ -97,3 +97,26 @@ export async function promptLlm(prompt: string, model: Model): Promise<string> {
     // Return the content of the assistant's reply, or an empty string if not provided.
     return completion.choices[0].message.content || "";
 }
+
+export async function promptLlmWithSchemaAndConversation(
+  model: Model,
+  messages: Array<{ role: "system" | "user" | "assistant"; content: any }>,
+  outputSchema: z.ZodObject<any>
+): Promise<any> {
+  const openai = new OpenAI({
+    apiKey: model.ak,
+    baseURL: model.base_url,
+  });
+
+  const completion = await openai.beta.chat.completions.parse({
+    model: model.name,
+    messages, // messages can include objects with content as an array of message parts (text and image)
+    response_format: zodResponseFormat(outputSchema, "output"),
+  });
+
+  if (completion.choices[0].message.refusal) {
+    throw new Error(`Model refused the request: ${completion.choices[0].message.refusal}`);
+  }
+
+  return completion.choices[0].message.parsed;
+}

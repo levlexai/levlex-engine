@@ -199,3 +199,12 @@ export interface GetNotebookRequest{
 export interface GetNotebookResponse{
     notebook: Notebook;
 }
+
+export interface GetPageRequest{
+    notebookID: string;
+    pageID: string;
+}
+
+export interface GetPageResponse{
+    page: NotebookPage;
+}

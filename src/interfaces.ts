@@ -136,3 +136,7 @@ export interface QueryMemoryResult{
     memory: string;
     distance: number;
 }
+
+export interface DeleteMemoryRequest{
+    brainID: string;
+}

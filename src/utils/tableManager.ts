@@ -76,3 +76,27 @@ export async function getTable(brainID: string) {
   // now open table
   return await globalDb.openTable(brainID);
 }
+
+/**
+ * dropTable: if the table (brainID) exists, drop it, remove record from lowdb, return true
+ * otherwise return false
+ */
+export async function dropTable(brainID: string): Promise<boolean> {
+  if (!globalDb || !lowdb) {
+    throw new Error("Must call initTableManager() before dropTable().");
+  }
+
+  const hasTable = !!lowdb.data.brains[brainID];
+  if (!hasTable) {
+    return false;
+  }
+
+  // LanceDB has a .dropTable(...) method
+  await globalDb.dropTable(brainID);
+
+  // remove from lowdb
+  delete lowdb.data.brains[brainID];
+  lowdb.write();
+
+  return true;
+}

@@ -81,3 +81,12 @@ export interface ImageGeneratorRequest{
 export interface ImageGeneratorOutput{
     image: Buffer;
 }
+
+export interface VideoGeneratorRequest{
+    prompt: string;
+    ak: string; // replicate API key
+}
+
+export interface VideoGeneratorOutput{
+    video: Buffer;
+}

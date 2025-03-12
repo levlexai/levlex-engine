@@ -208,3 +208,9 @@ export interface GetPageRequest{
 export interface GetPageResponse{
     page: NotebookPage;
 }
+
+export interface DeleteNotebookPageRequest{
+    notebookID: string;
+    pageID: string;
+}
+

@@ -184,3 +184,18 @@ export interface AddToPageAgentResponse{
     notebookID: string;
     page: NotebookPage;
 }
+
+export interface EditPageAgentRequest{
+    prompt: string;
+    model: Model;
+    notebookID: string;
+    pageID: string;
+}
+
+export interface GetNotebookRequest{
+    notebookID: string;
+}
+
+export interface GetNotebookResponse{
+    notebook: Notebook;
+}

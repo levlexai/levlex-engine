@@ -106,3 +106,9 @@ export interface AddMemoryRequest{
     memory: string;
     brainID: string;
 }
+
+export interface AskMemoryAgentRequest{
+    prompt: string;
+    n_queries?: number; // default three
+    model: Model;
+}

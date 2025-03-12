@@ -90,3 +90,14 @@ export interface VideoGeneratorRequest{
 export interface VideoGeneratorOutput{
     video: Buffer;
 }
+
+export interface TextToSpeechRequest{
+    text: string;
+    ak: string; // replicate API key
+    speed?: number; // default 1.0
+    voice?: string; // defaults to af_bella
+}
+
+export interface TextToSpeechOutput{
+    audio: Buffer;
+}

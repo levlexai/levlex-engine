@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
-import taskRoutes from './routes/tasks';
-import inboundPhoneAgent from './routes/inboundPhoneAgent'
-import outboundPhoneAgent from './routes/outboundPhoneAgent'
+// import inboundPhoneAgent from './routes/inboundPhoneAgent'
+// import outboundPhoneAgent from './routes/outboundPhoneAgent'
+import AgentOrchestrator from './routes/agent'
 import { initTableManager } from './utils/tableManager';
 import { initNotebookManager } from './utils/notebookManager';
 
@@ -9,14 +9,14 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json()); // Add this line to enable JSON parsing in the request body
-app.use('/tasks', taskRoutes); // Add this line to mount the Task API routes
 
 app.get('/', (req: Request, res: Response) => {
-    res.send('Hello, TypeScript Express!');
+    res.send('Hello from the Levlex Agent Engine!');
 });
 
-app.use("/phone", inboundPhoneAgent);
-app.use("/outbound", outboundPhoneAgent);
+// app.use("/phone", inboundPhoneAgent);
+// app.use("/outbound", outboundPhoneAgent);
+app.use('/agent', AgentOrchestrator)
 
 
 async function startServer() {

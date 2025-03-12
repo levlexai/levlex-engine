@@ -111,4 +111,13 @@ export interface AskMemoryAgentRequest{
     prompt: string;
     n_queries?: number; // default three
     model: Model;
+    brainID: string;
+}
+
+export interface SequentialMemoryAgentRequest {
+    prompt: string;
+    n_queries?: number; // default 3
+    max_recursion?: number; // default 10
+    brainID: string;
+    model: Model;
 }

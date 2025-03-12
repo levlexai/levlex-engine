@@ -1,13 +1,14 @@
 {
-    "compilerOptions": {
-      "target": "es6",
-      "module": "commonjs",
-      "outDir": "./dist",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true
-    },
-    "include": ["src/**/*.ts"],
-    "exclude": ["node_modules"]
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext", // or "node16"
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    // other options as needed
+  },
+  "include": ["src/**/*.mts"], // must match .mts
+  "exclude": ["node_modules"]
 }

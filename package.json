@@ -2,6 +2,7 @@
   "name": "levlex-engine",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc",
@@ -20,7 +21,6 @@
     "duck-duck-scrape": "^2.2.7",
     "exa-js": "^1.5.11",
     "express": "^4.21.2",
-    "lowdb": "^7.0.1",
     "openai": "^4.87.2",
     "pdf-parse": "^1.1.1",
     "pdfkit": "^0.16.0",

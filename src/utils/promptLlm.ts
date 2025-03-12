@@ -12,7 +12,7 @@ export interface Model{
 export async function promptLlmWithJsonSchema(
     model: Model,
     prompt: string,
-    outputSchema: z.ZodObject<any>, // zod schema
+    outputSchema: z.ZodSchema<any>, // zod schema
   ): Promise<any> {
     // Initialize the OpenAI SDK instance using your model's API key and base URL.
     const openai = new OpenAI({

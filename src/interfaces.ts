@@ -1,3 +1,5 @@
+import { StringValidation } from "zod";
+
 export interface InternetAgentRequest{
     prompt: string;
     n_queries?: number; // default three
@@ -227,4 +229,21 @@ export interface ReadWebpageAgentRequest{
 export interface YoutubeAgentRequest{
     prompt: string;
     model: Model;
+}
+
+export interface CodeAgentRequest{
+    prompt: string;
+    model: Model;
+    max_recursion?: number; // defaults to 10
+    language?: 'python' | 'javascript'; //defaults to javascript
+}
+
+export interface CodeAgentResponse{
+    conclusion: string;
+    rancode: RanCode[];
+}
+
+export interface RanCode{
+    code: string;
+    output: string;
 }

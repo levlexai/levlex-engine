@@ -10,7 +10,7 @@ import { getTable } from "../../utils/tableManager"; // your LanceDB manager
  * 3) do a vector search, limit topK
  * 4) map results to memory + similarity
  */
-export async function queryMemoryAgent(request: QueryMemoryRequest): Promise<QueryMemoryResponse> {
+export async function runQueryMemoryAgent(request: QueryMemoryRequest): Promise<QueryMemoryResponse> {
   const { query, brainID, n_results = 5 } = request;
 
   // 1) Open or create the LanceDB table for this brain

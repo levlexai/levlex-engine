@@ -96,7 +96,7 @@ function addParagraph(doc: PDFKit.PDFDocument, params: any, defaultColor: string
 // --------------------------------------------------------------------
 // Main PDF Generator Agent Function
 // --------------------------------------------------------------------
-export async function generatePdf(request: PdfGeneratorRequest): Promise<PdfGeneratorOutput> {
+export async function runPdfGenAgent(request: PdfGeneratorRequest): Promise<PdfGeneratorOutput> {
   const { prompt, model } = request;
 
   // --- Phase 1: Generate Outline ---

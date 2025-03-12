@@ -16,7 +16,7 @@
 import { ImageGeneratorRequest, ImageGeneratorOutput } from "../../interfaces";
 import Replicate from "replicate";
 
-export async function generateImage(request: ImageGeneratorRequest): Promise<ImageGeneratorOutput> {
+export async function runImageGenAgent(request: ImageGeneratorRequest): Promise<ImageGeneratorOutput> {
     const { prompt, ak, go_fast, guidance, megapixels, num_outputs, aspect_ratio, output_format, output_quality, prompt_strength, num_inference_steps } = request;
 
     const replicate = new Replicate({

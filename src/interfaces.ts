@@ -247,3 +247,27 @@ export interface RanCode{
     code: string;
     output: string;
 }
+
+/**
+ * Each agent call in the pipeline has:
+ *  - agent: the name of the agent to run (must match your agentMap keys)
+ *  - params: the request object needed by that agent
+ */
+export interface AgentPipelineCall {
+    agent: string;
+    params: any; // The agent-specific params
+  }
+  
+/**
+ * A row in the pipeline is an array of agent calls to run in parallel
+ */
+export type AgentPipelineRow = AgentPipelineCall[];
+  
+/**
+ * The overall request body for /agent
+ */
+export interface AgentRouteBody {
+    defaultModel: Model;
+    returnLastOnly?: boolean; // defaults to false
+    pipeline: AgentPipelineRow[]; 
+}

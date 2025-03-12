@@ -27,7 +27,7 @@ const decisionSchema = z.object({
   additional_prompt: z.string()
 });
 
-export async function runInternetAgent(request: SequentialInternetAgentRequest): Promise<string> {
+export async function runSequentialInternetAgent(request: SequentialInternetAgentRequest): Promise<string> {
   const { prompt, n_queries = 3, max_recursion = 10, service, model } = request;
 
   // Recursive helper function

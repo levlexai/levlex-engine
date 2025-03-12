@@ -16,7 +16,7 @@
 import { VideoGeneratorRequest, VideoGeneratorOutput } from "../../interfaces";
 import Replicate from "replicate";
 
-export async function generateVideo(request: VideoGeneratorRequest): Promise<VideoGeneratorOutput> {
+export async function runVideoGenAgent(request: VideoGeneratorRequest): Promise<VideoGeneratorOutput> {
     
     const { prompt, ak } = request;
 

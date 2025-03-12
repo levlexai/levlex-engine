@@ -11,7 +11,7 @@ import embeddings from "@themaximalist/embeddings.js";
  * 2) For each query, embed and do a LanceDB search in the given `brainID`
  * 3) Aggregate results, build a final prompt, ask the LLM for final answer
  */
-export async function askMemoryAgent(request: AskMemoryAgentRequest): Promise<string> {
+export async function runAskMemoryAgent(request: AskMemoryAgentRequest): Promise<string> {
   const { prompt, n_queries = 3, model, brainID } = request;
 
   // 1) Generate queries using structured output

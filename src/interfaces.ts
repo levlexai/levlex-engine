@@ -217,3 +217,14 @@ export interface DeleteNotebookPageRequest{
 export interface DeleteNotebookRequest{
     notebookID: string;
 }
+
+export interface ReadWebpageAgentRequest{
+    url: string;
+    model: Model;
+    prompt: string;
+}
+
+export interface YoutubeAgentRequest{
+    prompt: string;
+    model: Model;
+}

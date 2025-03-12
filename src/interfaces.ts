@@ -171,3 +171,16 @@ export interface WritePageAgentResponse{
     notebookID: string;
     page: NotebookPage;
 }
+
+export interface AddToPageAgentRequest{
+    prompt: string;
+    model: Model;
+    notebookID: string;
+    pageID: string;
+}
+
+export interface AddToPageAgentResponse{
+    pageID: string;
+    notebookID: string;
+    page: NotebookPage;
+}

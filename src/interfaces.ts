@@ -101,3 +101,8 @@ export interface TextToSpeechRequest{
 export interface TextToSpeechOutput{
     audio: Buffer;
 }
+
+export interface AddMemoryRequest{
+    memory: string;
+    brainID: string;
+}

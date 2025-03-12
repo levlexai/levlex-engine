@@ -152,3 +152,10 @@ export interface Notebook{
     title: string;
     pages: NotebookPage[];
 }
+
+export interface ReadPageAgentRequest{
+    prompt: string;
+    model: Model;
+    notebookID: string;
+    pageID: string;
+}

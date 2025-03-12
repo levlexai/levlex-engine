@@ -111,3 +111,23 @@ export function addPage(notebookId: string, page: NotebookPage): void {
   notebook.pages.push(page);
   notebookDB.write();
 }
+
+
+export function removeNotebook(notebookID: string): boolean {
+    if (!notebookDB) {
+      throw new Error("Notebook manager not initialized.");
+    }
+  
+    const oldLength = notebookDB.data.notebooks.length;
+    notebookDB.data.notebooks = notebookDB.data.notebooks.filter(
+      (n) => n.id !== notebookID
+    );
+    const newLength = notebookDB.data.notebooks.length;
+  
+    const removed = newLength < oldLength;
+    if (removed) {
+      notebookDB.write();
+    }
+    return removed;
+  }
+  

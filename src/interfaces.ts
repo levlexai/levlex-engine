@@ -214,3 +214,6 @@ export interface DeleteNotebookPageRequest{
     pageID: string;
 }
 
+export interface DeleteNotebookRequest{
+    notebookID: string;
+}

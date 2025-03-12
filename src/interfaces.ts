@@ -121,3 +121,18 @@ export interface SequentialMemoryAgentRequest {
     brainID: string;
     model: Model;
 }
+
+export interface QueryMemoryRequest{
+    query: string;
+    brainID: string;
+    n_results?: number; // defaults to 5
+}
+
+export interface QueryMemoryResponse{
+   memories: QueryMemoryResult[]; 
+}
+
+export interface QueryMemoryResult{
+    memory: string;
+    distance: number;
+}

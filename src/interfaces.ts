@@ -92,7 +92,7 @@ export interface VideoGeneratorOutput{
 }
 
 export interface TextToSpeechRequest{
-    text: string;
+    prompt: string;
     ak: string; // replicate API key
     speed?: number; // default 1.0
     voice?: string; // defaults to af_bella

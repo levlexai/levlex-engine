@@ -12,7 +12,7 @@
 import { InternetAgentRequest } from "../../interfaces";
 import { z } from "zod";
 import { promptLlmWithJsonSchema, promptLlm } from "../../utils/promptLlm";
-import { tavilyQuery, jinaQuery, braveQuery, exaQuery } from "../../utils/internetQueries";
+import { tavilyQuery, jinaQuery, braveQuery, exaQuery, duckduckgoQuery } from "../../utils/internetQueries";
 
 export async function runInternetAgent(request: InternetAgentRequest): Promise<string> {
     const { prompt, n_queries = 3, service, model } = request;
@@ -50,6 +50,8 @@ export async function runInternetAgent(request: InternetAgentRequest): Promise<s
         resultsForQuery = await braveQuery(query, serviceAk);
       } else if (serviceName === 'exa') {
         resultsForQuery = await exaQuery(query, serviceAk);
+      } else {
+        resultsForQuery = await duckduckgoQuery(query);
       }
       aggregatedResults.push(...resultsForQuery);
     }

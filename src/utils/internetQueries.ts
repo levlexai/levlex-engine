@@ -1,5 +1,6 @@
 import TurndownService from 'turndown';
 import Exa from 'exa-js';
+import { search, SafeSearchType } from "duck-duck-scrape";
 
 const turndownService = new TurndownService();
 const TAVILY_API_URL = "https://api.tavily.com/search";
@@ -130,4 +131,46 @@ export async function exaQuery(query: string, ak: string): Promise<{link: string
       console.error("Error querying Exa API:", error);
       return [];
     }
+}
+
+/**
+ * duckduckgoQuery:
+ *  - Takes a query string
+ *  - Uses duck-duck-scrape to perform a DuckDuckGo search
+ *  - Returns up to 5 results with { link, content } shape
+ */
+export async function duckduckgoQuery(query: string): Promise<{ link: string; content: string }[]> {
+  try {
+    console.log(`Querying DuckDuckGo with query: "${query}"`);
+
+    // Perform a DuckDuckGo search, e.g. strict safe search
+    const ddgResults = await search(query, {
+      safeSearch: SafeSearchType.STRICT,
+      // optionally specify region, locales, etc.
+    });
+
+    // If no results found or results array is empty
+    if (ddgResults.noResults || !ddgResults.results || ddgResults.results.length === 0) {
+      console.warn("No results returned from DuckDuckGo search");
+      return [];
+    }
+
+    console.log(`DuckDuckGo returned ${ddgResults.results.length} results`);
+
+    // Convert each result to { link, content }, limiting to 5
+    const finalResults = ddgResults.results.slice(0, 5).map((result: any) => {
+      // 'snippet' is often HTML-ish, so we convert it to markdown or plain text
+      const snippet = result.snippet || "";
+      const content = turndownService.turndown(snippet);
+      return {
+        link: result.url || "",
+        content,
+      };
+    });
+
+    return finalResults;
+  } catch (error) {
+    console.error("Error querying DuckDuckGo:", error);
+    return [];
+  }
 }

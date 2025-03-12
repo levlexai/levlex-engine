@@ -19,7 +19,7 @@
 import { SequentialInternetAgentRequest, InternetAgentRequest, Model, InternetService } from "../../interfaces";
 import { z } from "zod";
 import { promptLlmWithJsonSchema, promptLlm } from "../../utils/promptLlm";
-import { tavilyQuery, jinaQuery, braveQuery, exaQuery } from "../../utils/internetQueries";
+import { tavilyQuery, jinaQuery, braveQuery, exaQuery, duckduckgoQuery } from "../../utils/internetQueries";
 
 // Decision schema for whether to search again
 const decisionSchema = z.object({
@@ -64,6 +64,8 @@ User prompt: "${currentPrompt}"
         resultsForQuery = await braveQuery(query, serviceAk);
       } else if (serviceName === 'exa') {
         resultsForQuery = await exaQuery(query, serviceAk);
+      } else {
+              resultsForQuery = await duckduckgoQuery(query);
       }
       aggregatedResults.push(...resultsForQuery);
     }

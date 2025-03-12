@@ -61,7 +61,6 @@ We have retrieved the following memory chunks from the local store (citations in
 ${memoryResultsText}
 
 Now please provide a comprehensive, fact-based answer to the user's prompt. 
-Use citations (like [1.1], [2.2]) in your answer to back up every claim.
 `;
 
   // 4) Generate final answer using plain text prompt function

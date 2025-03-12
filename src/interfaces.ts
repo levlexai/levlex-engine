@@ -159,3 +159,15 @@ export interface ReadPageAgentRequest{
     notebookID: string;
     pageID: string;
 }
+
+export interface WritePageAgentRequest{
+    prompt: string;
+    model: Model;
+    notebookID: string;
+}
+
+export interface WritePageAgentResponse{
+    pageID: string;
+    notebookID: string;
+    page: NotebookPage;
+}

@@ -3,6 +3,7 @@ import taskRoutes from './routes/tasks';
 import inboundPhoneAgent from './routes/inboundPhoneAgent'
 import outboundPhoneAgent from './routes/outboundPhoneAgent'
 import { initTableManager } from './utils/tableManager';
+import { initNotebookManager } from './utils/notebookManager';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -21,6 +22,7 @@ app.use("/outbound", outboundPhoneAgent);
 async function startServer() {
     // 1) Initialize the table manager *before* starting the server
     await initTableManager();
+    initNotebookManager();
   
     // 2) Now that everything is ready, listen for incoming requests
     app.listen(port, () => {

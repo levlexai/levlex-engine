@@ -140,3 +140,15 @@ export interface QueryMemoryResult{
 export interface DeleteMemoryRequest{
     brainID: string;
 }
+
+export interface NotebookPage{
+    id: string;
+    title: string;
+    content: string[];
+}
+
+export interface Notebook{
+    id: string;
+    title: string;
+    pages: NotebookPage[];
+}
